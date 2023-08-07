@@ -1,0 +1,20 @@
+# Requirements:
+* Python 3.x
+* pycryptodome library (pip install pycryptodome)
+
+# What does it do:
+* This Python script demonstrates encryption and decryption using the AES (Advanced Encryption Standard) algorithm in Python.
+
+# How does it work:
+* The encrypt(plaintext, key) function takes a plaintext message and a secret key as input and encrypts the message using AES in CBC (Cipher-Block Chaining) mode. 
+* It returns the ciphertext and the initialization vector (IV) used for encryption.
+* The decrypt(ciphertext, key, iv) function takes the ciphertext, secret key, and IV as input and decrypts the ciphertext using AES in CBC mode. 
+* It returns the original plaintext.
+# Usage:
+* Install the required dependencies using pip install pycryptodome.
+* Modify the key variable in the script with your own secret key.
+* Run the script and observe the encryption and decryption process, with an example provided.
+
+# Listed below is an example of what a succesful input/output may look like:
+* Original message: Hello, world! This is a secret message.
+* Decrypted message: Hello, world! This is a secret message.
