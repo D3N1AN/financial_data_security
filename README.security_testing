@@ -1,0 +1,30 @@
+# Security Checker
+* This script performs basic security checks on a given URL and detects common vulnerabilities such as Cross-Site Scripting (XSS), SQL Injection, and Insecure Direct Object References.
+
+# Requirements
+* Python 3.x
+* requests library (install using `pip install requests`)
+
+# What does it do?
+* The script uses Python's requests library to send HTTP requests to the provided URL with different payloads. 
+* It then checks the responses to determine if any common security vulnerabilities exist.
+
+# How does it work?
+* The script sends a GET request with a payload that contains a script tag (`<script>alert('XSS vulnerability')</script>`) to check for XSS vulnerabilities.
+* It sends another GET request with a payload (`id=1' OR '1'='1`) to check for SQL Injection vulnerabilities.
+* Lastly, it sends a GET request with a payload (`/admin`) to check for Insecure Direct Object References.
+
+# Usage
+* Import the script into your Python code: `from security_checker import check_security`
+* Call the `check_security` function with the URL you want to test: `results = check_security("https://example.com")`
+* The function will return a dictionary containing the results of the security checks.
+
+# Listed below is an example of what a succesful input/output may look like:
+* URL: "https://example.com"
+* { "XSS Vulnerability": "Not Detected", "SQL Injection Vulnerability": "Not Detected", "Insecure Direct Object Reference": "Not Detected" }
+
+
+# Listed below is an example of what a failed input/output may look like:
+* URL: "https://example.com"
+* { "XSS Vulnerability": "Detected", "SQL Injection Vulnerability": "Not Detected", "Insecure Direct Object Reference": "Not Detected" }
+
