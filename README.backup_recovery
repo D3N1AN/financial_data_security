@@ -1,0 +1,53 @@
+This script automates the process of securely backing up data to an external storage system while ensuring encryption, integrity, and easy data restoration.
+
+# Requirements
+* Python 3.x
+* cryptography library (install using `pip install cryptography`)
+
+# What does it do?
+* The script encrypts the data using the provided encryption key before transmission.
+* It then copies the encrypted data to a temporary directory on the local machine.
+* The encrypted backup files are then moved to the destination directory on the external storage system.
+* The integrity of the backup files is verified by decrypting them while calculating and comparing the hashes of the source and destination files.
+
+# How does it work?
+* The `encrypt_file` function takes a key and file path as input, encrypts the file using the Fernet symmetric encryption algorithm, and overwrites the file with the encrypted data.
+* The `decrypt_file` function takes a key and file path as input, decrypts the file using the Fernet symmetric encryption algorithm, and overwrites the file with the decrypted data.
+* The `backup_data` function accepts a source directory, destination directory, and encryption key as input. It iterates through the files in the source directory, encrypts each file, and copies it to a temporary directory. Finally, it moves the encrypted backup files to the destination directory.
+* The `verify_integrity` function accepts a source directory, destination directory, and encryption key as input. It iterates through the files in the source directory, decrypts the corresponding backup file, calculates the hash of the source file and decrypted destination file, and compares the hashes for integrity check. If the hashes don't match, the integrity check is considered failed.
+
+# Usage
+* Set the `source_dir`, `destination_dir`, and `encryption_key` variables in the script with appropriate values. For example:
+   ```python
+   source_dir = '/home/user/Documents/important_files'
+   destination_dir = '/mnt/backup_drive'
+* Run the script using Python: python backup_script.py.
+* The script will encrypt the files, copy them to the destination directory, and perform an integrity check.
+
+# Listed below is an example of what a succesful input/output may look like:
+* Input:
+source_dir = '/home/user/Documents/important_files'
+destination_dir = '/mnt/backup_drive'
+encryption_key = b'encryption_key_here'
+
+* Output:
+- Files from '/home/user/Documents/important_files' are successfully encrypted.
+- Encrypted files are copied to the temporary directory.
+- Encrypted backup files are moved to '/mnt/backup_drive'.
+- Integrity check for all files passed.
+
+# Listed below is an example of what a failed input/output may look like:
+* Input:
+source_dir = '/home/user/Documents/important_files'
+destination_dir = '/mnt/backup_drive'
+encryption_key = b'encryption_key_here'
+
+* Output:
+- Files from '/home/user/Documents/important_files' are successfully encrypted.
+- Encrypted files are copied to the temporary directory.
+- Encrypted backup files are moved to '/mnt/backup_drive'.
+- Integrity check failed for '/mnt/backup_drive/important_file.txt'.
+
+# Important Note
+Make sure to replace '/home/user/Documents/important_files' and '/mnt/backup_drive' with the actual paths to your source and destination directories.
+Ensure that you have the necessary permissions to access and modify the specified directories.
