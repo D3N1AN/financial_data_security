@@ -1,0 +1,25 @@
+# Requirements
+* Python 3.x
+
+# What does it do?
+* The script utilizes the `smtplib` library to send email notifications when a security incident is detected. It can be used to rapidly alert stakeholders and initiate the incident response process.
+
+# How does it Work?
+* The script defines a `send_email` function that uses the Gmail SMTP server to send an email. You need to provide the sender's email address, password, recipient's email address, subject, and message. The function will establish a secure connection and send the email using the provided credentials.
+
+# Usage
+* Replace the placeholder values in the script with your actual email credentials and the details of the email you want to send.
+* Run the script using Python: `python incident_notification.py`.
+
+# Listed below is an example of what a succesful input/output may look like:
+* Input: sender_email = 'your_email@gmail.com' sender_password = 'your_password' recipient_email = 'recipient@example.com' subject = 'Security Incident Detected' message = 'Dear Stakeholders,\n\nWe have detected a security incident in our organization. Please initiate the incident response plan immediately.'
+* Output: An email is successfully sent from 'your_email@gmail.com' to 'recipient@example.com' with the subject 'Security Incident Detected' and the provided message.
+
+# Listed below is an example of what a failed input/output may look like:
+* Input: sender_email = 'your_email@gmail.com' sender_password = 'your_password' recipient_email = 'recipient@example.com' subject = 'Security Incident Detected' message = 'Dear Stakeholders,\n\nWe have detected a security incident in our organization. Please initiate the incident response plan immediately.'
+* Output: Unable to send an email. Please check the provided email credentials or verify that the SMTP server is accessible.
+
+# Note
+* Ensure that you have the necessary permissions to send emails using the designated SMTP server.
+* In this example, Gmail's SMTP server is used. If you are using a different email provider, you may need to modify the script accordingly.
+* The incident response plan in the directory is a general framework and may need further customization based on the specific needs and requirements of your financial company. Please tailor accordingly.
